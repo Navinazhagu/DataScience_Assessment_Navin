@@ -1,0 +1,20 @@
+# Quick run commands
+
+# create env and install deps
+python -m venv venv
+source venv/bin/activate   # Linux / Mac
+venv\Scripts\activate    # Windows
+
+pip install -r requirements.txt
+
+# prepare model (this downloads pretrained weights)
+python task2_train.py
+
+# quick CLI test (after adding sample images)
+python task2_test.py sample_images/image1.jpg sample_images/image2.jpg
+
+# run app
+python fastapi_app.py
+
+# test via curl (example)
+curl -X POST "http://127.0.0.1:8000/verify" -F "file1=@sample_images/image1.jpg" -F "file2=@sample_images/image2.jpg"
